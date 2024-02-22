@@ -14,6 +14,12 @@
 		0F64C43B2B868F1F00061D62 /* AppetizerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F64C43A2B868F1F00061D62 /* AppetizerListView.swift */; };
 		0F64C43D2B868F2D00061D62 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F64C43C2B868F2D00061D62 /* AccountView.swift */; };
 		0F64C43F2B868F3500061D62 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F64C43E2B868F3500061D62 /* OrderView.swift */; };
+		0F64C4412B8695DF00061D62 /* AppetizerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F64C4402B8695DF00061D62 /* AppetizerModel.swift */; };
+		0F64C4432B86A39E00061D62 /* AppetizerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F64C4422B86A39E00061D62 /* AppetizerListCell.swift */; };
+		0F64C4452B86A69400061D62 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F64C4442B86A69400061D62 /* NetworkManager.swift */; };
+		0F64C4472B86A79F00061D62 /* APError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F64C4462B86A79F00061D62 /* APError.swift */; };
+		0F64C4492B86B1AA00061D62 /* AppetizerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F64C4482B86B1AA00061D62 /* AppetizerListViewModel.swift */; };
+		0F64C44B2B87746300061D62 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F64C44A2B87746300061D62 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +31,12 @@
 		0F64C43A2B868F1F00061D62 /* AppetizerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppetizerListView.swift; sourceTree = "<group>"; };
 		0F64C43C2B868F2D00061D62 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		0F64C43E2B868F3500061D62 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		0F64C4402B8695DF00061D62 /* AppetizerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppetizerModel.swift; sourceTree = "<group>"; };
+		0F64C4422B86A39E00061D62 /* AppetizerListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppetizerListCell.swift; sourceTree = "<group>"; };
+		0F64C4442B86A69400061D62 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0F64C4462B86A79F00061D62 /* APError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APError.swift; sourceTree = "<group>"; };
+		0F64C4482B86B1AA00061D62 /* AppetizerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppetizerListViewModel.swift; sourceTree = "<group>"; };
+		0F64C44A2B87746300061D62 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +70,14 @@
 			isa = PBXGroup;
 			children = (
 				0F64C42C2B868EA400061D62 /* AppetizersApp.swift */,
+				0F64C4402B8695DF00061D62 /* AppetizerModel.swift */,
+				0F64C4422B86A39E00061D62 /* AppetizerListCell.swift */,
 				0F64C42E2B868EA400061D62 /* AppetizersTabView.swift */,
 				0F64C43A2B868F1F00061D62 /* AppetizerListView.swift */,
+				0F64C4482B86B1AA00061D62 /* AppetizerListViewModel.swift */,
+				0F64C44A2B87746300061D62 /* Alert.swift */,
+				0F64C4442B86A69400061D62 /* NetworkManager.swift */,
+				0F64C4462B86A79F00061D62 /* APError.swift */,
 				0F64C43C2B868F2D00061D62 /* AccountView.swift */,
 				0F64C43E2B868F3500061D62 /* OrderView.swift */,
 				0F64C4302B868EA600061D62 /* Assets.xcassets */,
@@ -146,9 +164,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F64C4412B8695DF00061D62 /* AppetizerModel.swift in Sources */,
+				0F64C4472B86A79F00061D62 /* APError.swift in Sources */,
 				0F64C43D2B868F2D00061D62 /* AccountView.swift in Sources */,
+				0F64C4492B86B1AA00061D62 /* AppetizerListViewModel.swift in Sources */,
 				0F64C42F2B868EA400061D62 /* AppetizersTabView.swift in Sources */,
+				0F64C4432B86A39E00061D62 /* AppetizerListCell.swift in Sources */,
+				0F64C4452B86A69400061D62 /* NetworkManager.swift in Sources */,
 				0F64C42D2B868EA400061D62 /* AppetizersApp.swift in Sources */,
+				0F64C44B2B87746300061D62 /* Alert.swift in Sources */,
 				0F64C43B2B868F1F00061D62 /* AppetizerListView.swift in Sources */,
 				0F64C43F2B868F3500061D62 /* OrderView.swift in Sources */,
 			);
@@ -281,10 +305,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Appetizers/Preview Content\"";
-				DEVELOPMENT_TEAM = FV84NP7NXG;
+				DEVELOPMENT_TEAM = W4ZZT8C4F9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -300,6 +325,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeannchuab.Appetizers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,10 +337,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Appetizers/Preview Content\"";
-				DEVELOPMENT_TEAM = FV84NP7NXG;
+				DEVELOPMENT_TEAM = W4ZZT8C4F9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -330,6 +357,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeannchuab.Appetizers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
