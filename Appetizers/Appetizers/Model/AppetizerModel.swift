@@ -55,7 +55,7 @@ struct AppetizerResponse: Decodable {
 
 struct MockData {
     static let sampleAppetizer = AppetizerModel(id: 1, protein: 10, imageURL: "", name: "Yaksoba",
-                                                description: "This is a very tasty Yaksoba", price: 10.00,
+                                                description: "This is a very tasty Yaksoba lorem lorem ipsum lorem with onions lorem ipsum.", price: 10.00,
                                                 calories: 99, carbs: 44)
     
     static let sampleAppetizerList = [AppetizerModel].init(repeating: MockData.sampleAppetizer, count: 20)    

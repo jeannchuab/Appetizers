@@ -13,11 +13,17 @@ struct AppetizerListCell: View {
     
     var body: some View {
         HStack {
-            Image("asian-flank-steak")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 80)
-                .cornerRadius(8)
+            AsyncImage(url: URL(string: appetizer.imageURL)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } placeholder: {
+                Image("food-placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }            
+            .frame(width: 100, height: 80)
+            .cornerRadius(8)
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(appetizer.name)
@@ -26,7 +32,7 @@ struct AppetizerListCell: View {
                 
                 Text("$\(appetizer.price, specifier: "%.2f")")
                     .foregroundStyle(.secondary)
-//                    .fontWeight(.regular) //Only available in iOS 16
+                //                    .fontWeight(.regular) //Only available in iOS 16
             }
             .padding(.leading)
         }
