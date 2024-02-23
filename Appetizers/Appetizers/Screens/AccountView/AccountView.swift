@@ -9,35 +9,28 @@ import SwiftUI
 
 struct AccountView: View {
     
-    @State private var textFieldFirstName = ""
-    @State private var textFieldLastName = ""
-    @State private var textFieldEmail = ""
-    @State private var textFieldBirthday = Date()
-    @State private var toggleExtraNapkings = false
-    @State private var toggleFrequentRefills = false
+    @StateObject var viewModel = AccountViewModel()
     
     var body: some View {
-        NavigationView {
-            
+        NavigationView {            
             Form {
-                
                 Section(content: {
-                    TextField("First name", text: $textFieldFirstName)
+                    TextField("First name", text: $viewModel.textFieldFirstName)
                         .autocorrectionDisabled(false)
                         
-                    TextField("Last name", text: $textFieldLastName)
+                    TextField("Last name", text: $viewModel.textFieldLastName)
                         .autocorrectionDisabled(false)
                     
-                    TextField("Email", text: $textFieldEmail)
+                    TextField("Email", text: $viewModel.textFieldEmail)
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled(false)
                                                             
-                    DatePicker("Birthday", selection: $textFieldBirthday,
+                    DatePicker("Birthday", selection: $viewModel.textFieldBirthday,
                                displayedComponents: .date)
                                         
                     Button(action: {
-                        print("Click buton")
+                        viewModel.saveChanges()
                     }, label: {
                         Text("Save changes")
                     })
@@ -48,10 +41,10 @@ struct AccountView: View {
                 })
                 
                 Section(content: {
-                    Toggle("Extra Napkings", isOn: $toggleExtraNapkings)
+                    Toggle("Extra Napkings", isOn: $viewModel.toggleExtraNapkings)
 //                         .tint(Color.brandPrimary)
                         
-                    Toggle("Frequent Refills", isOn: $toggleFrequentRefills)
+                    Toggle("Frequent Refills", isOn: $viewModel.toggleFrequentRefills)
 //                        .tint(Color.brandPrimary)
                     
                 }, header: {
@@ -60,6 +53,11 @@ struct AccountView: View {
                 .tint(Color.brandPrimary)
             }
             .navigationTitle("👨‍💼 Account")
+        }
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(title: alertItem.title,
+                  message: alertItem.message,
+                  dismissButton: alertItem.dismissButton)
         }
     }
 }
