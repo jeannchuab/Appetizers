@@ -15,9 +15,22 @@ struct AppetizerDetailView: View {
     var body: some View {
         
         VStack {
-            Image("asian-flank-steak")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            //TODO: Use cache to download the image
+            AsyncImage(url: URL(string: appetizer.imageURL)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } placeholder: {
+                Image("food-placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+            .frame(height: 190)
+            .cornerRadius(8)
+            
+//            Image("asian-flank-steak")
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
             
             VStack{
                 Text(appetizer.name)
@@ -30,33 +43,9 @@ struct AppetizerDetailView: View {
                     .padding()
                 
                 HStack(spacing: 40) {
-                    VStack {
-                        Text("Calories")
-                            .bold()
-                            .font(.caption)
-                        
-                        Text("\(appetizer.calories)")
-                            .foregroundStyle(.secondary)                            
-                    }
-                    
-                    VStack {
-                        Text("Carbs")
-                            .bold()
-                            .font(.caption)
-                        
-                        Text("\(appetizer.carbs)")
-                            .foregroundStyle(.secondary)
-                    }
-                    
-                    VStack {
-                        Text("Protein")
-                            .bold()
-                            .font(.caption)
-//                            .italic() //iOS 16 or newer
-                        
-                        Text("\(appetizer.protein)")
-                            .foregroundStyle(.secondary)
-                    }
+                    NutritionInfoView(title: "Calories", value: appetizer.calories)
+                    NutritionInfoView(title: "Carbs", value: appetizer.carbs)
+                    NutritionInfoView(title: "Protein", value: appetizer.protein)
                 }
             }
             .padding(.top)
@@ -66,13 +55,7 @@ struct AppetizerDetailView: View {
             Button {
                 print("Buy item")
             } label: {
-                Text("$\(appetizer.price, specifier: "%.2f") - Add to order")
-                    .font(.title2)
-                    .frame(width: 260, height: 50)
-//                    .fontWeight(.semibold) //iOS 16 or newer
-                    .foregroundStyle(.white)
-                    .background(Color.brandPrimary)
-                    .cornerRadius(10)
+                APButton(price: "$\(appetizer.price, specifier: "%.2f") - Add to order")
             }
             .padding(.bottom)
         }
@@ -80,25 +63,16 @@ struct AppetizerDetailView: View {
         .background(Color(.systemBackground))
         .cornerRadius(12)
         .shadow(radius: 40)
-        .overlay( 
+        .overlay(
             Button {
-                isShowingDetail = false
-            } label: {
-                ZStack {
-                    Circle()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                        .opacity(0.8)
-                    
-                    Image(systemName: "xmark")
-                        .foregroundStyle(.black)
+                withAnimation(.easeInOut) {
+                    isShowingDetail = false
                 }
+            } label: {
+                XDismissButton()
             }
-            .padding()
+            .padding()                        
         ,alignment: .topTrailing)
-        
-        
-        
     }
 }
 
