@@ -14,19 +14,24 @@ struct AccountView: View {
     var body: some View {
         NavigationView {            
             Form {
-                Section(content: {
-                    TextField("First name", text: $viewModel.textFieldFirstName)
+                Section("Notes") {
+                    TextField("Placeholder text", text: $viewModel.userModel.firstName)
+                }
+
+                Section("Personal Info") {
+                
+                    TextField("First name", text: $viewModel.userModel.firstName)
                         .autocorrectionDisabled(false)
                         
-                    TextField("Last name", text: $viewModel.textFieldLastName)
+                    TextField("Last name", text: $viewModel.userModel.lastName)
                         .autocorrectionDisabled(false)
                     
-                    TextField("Email", text: $viewModel.textFieldEmail)
+                    TextField("Email", text: $viewModel.userModel.email)
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled(false)
                                                             
-                    DatePicker("Birthday", selection: $viewModel.textFieldBirthday,
+                    DatePicker("Birthday", selection: $viewModel.userModel.birthday,
                                displayedComponents: .date)
                                         
                     Button(action: {
@@ -35,21 +40,16 @@ struct AccountView: View {
                         Text("Save changes")
                     })
                     .tint(Color.brandPrimary)
-                    
-                }, header: { 
-                    Text("Personal Info")
-                })
+                }
                 
-                Section(content: {
-                    Toggle("Extra Napkings", isOn: $viewModel.toggleExtraNapkings)
+                Section("Requests") {
+                    Toggle("Extra Napkings", isOn: $viewModel.userModel.extraNapkings)
 //                         .tint(Color.brandPrimary)
                         
-                    Toggle("Frequent Refills", isOn: $viewModel.toggleFrequentRefills)
+                    Toggle("Frequent Refills", isOn: $viewModel.userModel.frequentRefills)
 //                        .tint(Color.brandPrimary)
                     
-                }, header: {
-                    Text("Requests")
-                })
+                }
                 .tint(Color.brandPrimary)
             }
             .navigationTitle("👨‍💼 Account")
