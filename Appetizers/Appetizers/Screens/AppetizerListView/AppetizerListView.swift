@@ -24,6 +24,7 @@ struct AppetizerListView: View {
                 }
                 .navigationTitle("🍟 Appetizers")
                 .disabled(viewModel.isShowingDetail)
+                .listStyle(.plain)
             }
             .onAppear {
                 self.viewModel.getAppetizers()
@@ -35,7 +36,7 @@ struct AppetizerListView: View {
             }
             
             if viewModel.isShowingDetail {
-                AppetizerDetailView(appetizer: viewModel.selectedAppetizer ?? MockData.sampleAppetizer,
+                AppetizerDetailView(appetizer: viewModel.selectedAppetizer ?? MockData.sampleAppetizer1,
                                     isShowingDetail: $viewModel.isShowingDetail)
             }
         }

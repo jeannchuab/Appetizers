@@ -5,9 +5,12 @@
 //  Created by Jeann Luiz on 23/02/24.
 //
 
-import Foundation
+import SwiftUI
 
 final class AccountViewModel: ObservableObject {
+    
+    @AppStorage("user") private var userData: Data?
+    
     @Published var userModel = UserModel()
     @Published var alertItem: AlertItem?
     
@@ -29,5 +32,23 @@ final class AccountViewModel: ObservableObject {
     
     func saveChanges() {
         guard isValidForm else { return }
+        
+        do {
+            let data = try JSONEncoder().encode(userModel)
+            userData = data
+            alertItem = AlertContext.userSaveSucess
+        } catch {
+            alertItem = AlertContext.invalidUserData
+        }
+    }
+    
+    func retrieveUser() {
+        guard let userData = userData else { return }
+        
+        do {
+            userModel = try JSONDecoder().decode(UserModel.self, from: userData)
+        } catch {
+            alertItem = AlertContext.invalidUserData
+        }
     }
 }

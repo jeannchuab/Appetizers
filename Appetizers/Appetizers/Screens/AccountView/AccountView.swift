@@ -14,10 +14,6 @@ struct AccountView: View {
     var body: some View {
         NavigationView {            
             Form {
-                Section("Notes") {
-                    TextField("Placeholder text", text: $viewModel.userModel.firstName)
-                }
-
                 Section("Personal Info") {
                 
                     TextField("First name", text: $viewModel.userModel.firstName)
@@ -33,13 +29,6 @@ struct AccountView: View {
                                                             
                     DatePicker("Birthday", selection: $viewModel.userModel.birthday,
                                displayedComponents: .date)
-                                        
-                    Button(action: {
-                        viewModel.saveChanges()
-                    }, label: {
-                        Text("Save changes")
-                    })
-                    .tint(Color.brandPrimary)
                 }
                 
                 Section("Requests") {
@@ -47,12 +36,21 @@ struct AccountView: View {
 //                         .tint(Color.brandPrimary)
                         
                     Toggle("Frequent Refills", isOn: $viewModel.userModel.frequentRefills)
-//                        .tint(Color.brandPrimary)
-                    
+//                        .tint(Color.brandPrimary)                    
                 }
+                .tint(Color.brandPrimary)
+                
+                Button(action: {
+                    viewModel.saveChanges()
+                }, label: {
+                    Text("Save changes")
+                })
                 .tint(Color.brandPrimary)
             }
             .navigationTitle("👨‍💼 Account")
+        }
+        .onAppear {
+            viewModel.retrieveUser()
         }
         .alert(item: $viewModel.alertItem) { alertItem in
             Alert(title: alertItem.title,

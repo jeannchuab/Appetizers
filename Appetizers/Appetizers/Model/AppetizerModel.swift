@@ -54,9 +54,22 @@ struct AppetizerResponse: Decodable {
 }
 
 struct MockData {
-    static let sampleAppetizer = AppetizerModel(id: 1, protein: 10, imageURL: "", name: "Yaksoba",
+    static let sampleAppetizer1 = AppetizerModel(id: 1, protein: 10, imageURL: "", name: "Yaksoba 1",
                                                 description: "This is a very tasty Yaksoba lorem lorem ipsum lorem with onions lorem ipsum.", price: 10.00,
                                                 calories: 99, carbs: 44)
     
-    static let sampleAppetizerList = [AppetizerModel].init(repeating: MockData.sampleAppetizer, count: 20)    
+    static let sampleAppetizer2 = AppetizerModel(id: 2, protein: 10, imageURL: "", name: "Yaksoba 2",
+                                                description: "This is a very tasty Yaksoba lorem lorem ipsum lorem with onions lorem ipsum.", price: 22.00,
+                                                calories: 99, carbs: 44)
+    
+    static let sampleAppetizer3 = AppetizerModel(id: 3, protein: 10, imageURL: "", name: "Yaksoba 2",
+                                                description: "This is a very tasty Yaksoba lorem lorem ipsum lorem with onions lorem ipsum.", price: 33.00,
+                                                calories: 99, carbs: 44)
+    
+    static let sampleAppetizer4 = AppetizerModel(id: 4, protein: 10, imageURL: "", name: "Yaksoba 4",
+                                                description: "This is a very tasty Yaksoba lorem lorem ipsum lorem with onions lorem ipsum.", price: 44.44,
+                                                calories: 50, carbs: 44)
+        
+    static let sampleAppetizerList: [AppetizerModel] = [sampleAppetizer1, sampleAppetizer2, sampleAppetizer3, sampleAppetizer4]
+    static let orderItems: [AppetizerModel] = [sampleAppetizer1, sampleAppetizer2, sampleAppetizer3, sampleAppetizer4]
 }

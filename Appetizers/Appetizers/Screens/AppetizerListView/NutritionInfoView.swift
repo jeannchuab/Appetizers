@@ -26,5 +26,5 @@ struct NutritionInfoView: View {
 
 
 #Preview {
-    NutritionInfoView(title: "Carbs", value: MockData.sampleAppetizer.carbs)
+    NutritionInfoView(title: "Carbs", value: MockData.sampleAppetizer1.carbs)
 }

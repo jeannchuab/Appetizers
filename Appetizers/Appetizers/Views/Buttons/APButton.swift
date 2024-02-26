@@ -23,5 +23,5 @@ struct APButton: View {
 }
 
 #Preview {
-    APButton(price: "$\(MockData.sampleAppetizer.price, specifier: "%.2f") - Add to order")
+    APButton(price: "$\(MockData.sampleAppetizer1.price, specifier: "%.2f") - Add to order")
 }
