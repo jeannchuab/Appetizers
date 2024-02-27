@@ -32,8 +32,11 @@ struct OrderView: View {
                     Button {
                         print("Place order")
                     } label: {
-                        APButton(price: "$\(orderViewModel.totalPrice, specifier: "%.2f") - Place order")
+//                        APButton(price: )
+                        Text("$\(orderViewModel.totalPrice, specifier: "%.2f") - Place order")
                     }
+                    .modifier(StandardButtonStyle())
+                    //.standardButtonStyle() //Another way to use the modifier
                     .padding(.bottom)
                 }
                                     

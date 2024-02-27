@@ -15,6 +15,8 @@ struct AppetizerListView: View {
             NavigationView {
                 List(viewModel.appetizers) { appetizer in
                     AppetizerListCell(appetizer: appetizer)
+                        //.listRowSeparator(.hidden)
+                        .listRowSeparatorTint(Color.accentColor)
                         .onTapGesture {
                             withAnimation(.easeInOut) {
                                 viewModel.isShowingDetail = true
@@ -26,10 +28,13 @@ struct AppetizerListView: View {
                 .listStyle(.plain)
                 .disabled(viewModel.isShowingDetail)
             }
-            .onAppear {
-                self.viewModel.getAppetizers()
-            }
             .blur(radius: viewModel.isShowingDetail ? 20 : 0)
+            //            .onAppear { //Completion code
+            //                self.viewModel.getAppetizers()
+            //            }
+            .task { //Async code
+                viewModel.getAppetizers()
+            }
             
             if viewModel.isLoading {
                 LoadingView()

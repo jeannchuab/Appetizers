@@ -18,7 +18,7 @@ struct AppetizerDetailView: View {
         
         VStack {
             //TODO: Use cache to download the image
-            AsyncImage(url: URL(string: appetizer.imageURL)) { image in
+            CacheAsyncImage(url: URL(string: appetizer.imageURL)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -57,8 +57,10 @@ struct AppetizerDetailView: View {
                     isShowingDetail = false
                 }
             } label: {
-                APButton(price: "$\(appetizer.price, specifier: "%.2f") - Add to order")
+//                APButton(price: )
+                Text("$\(appetizer.price, specifier: "%.2f") - Add to order")
             }
+            .modifier(StandardButtonStyle())            
             .padding(.bottom)
         }
         .frame(width: 300, height: 525)

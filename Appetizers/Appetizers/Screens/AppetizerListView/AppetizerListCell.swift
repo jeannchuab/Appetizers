@@ -13,7 +13,8 @@ struct AppetizerListCell: View {
     
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: appetizer.imageURL)) { image in
+            //TODO: Use cache to download the image
+            CacheAsyncImage(url: URL(string: appetizer.imageURL)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -32,7 +33,7 @@ struct AppetizerListCell: View {
                 
                 Text("$\(appetizer.price, specifier: "%.2f")")
                     .foregroundStyle(.secondary)
-                //                    .fontWeight(.regular) //Only available in iOS 16
+//                    .fontWeight(.regular) //Only available in iOS 16
             }
             .padding(.leading)
         }

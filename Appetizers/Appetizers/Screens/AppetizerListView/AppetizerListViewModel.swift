@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class AppetizerListViewModel: ObservableObject {
     @Published var appetizers: [AppetizerModel] = []
     @Published var alertItem: AlertItem?
@@ -42,6 +43,28 @@ final class AppetizerListViewModel: ObservableObject {
                         self?.alertItem = AlertContext.unableToComplete
                     }
                 }
+            }
+        }
+    }
+    
+    func getAppetizersAsync() {
+        
+        isLoading = true
+        
+        Task {
+            do {
+                appetizers = try await NetworkManager.shared.getAppetizersAsync()
+                isLoading = false
+            } catch APError.invalidUrl {
+                alertItem = AlertContext.invalidUrl
+            } catch APError.invalidResponse {
+                alertItem = AlertContext.invalidResponse
+            } catch APError.invalidData {
+                alertItem = AlertContext.invalidData
+            } catch APError.unableToComplete {
+                alertItem = AlertContext.unableToComplete
+            } catch {
+                alertItem = AlertContext.unableToComplete
             }
         }
     }

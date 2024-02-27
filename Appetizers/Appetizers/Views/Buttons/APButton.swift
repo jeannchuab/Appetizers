@@ -17,6 +17,7 @@ struct APButton: View {
             .frame(width: 260, height: 50)
 //                    .fontWeight(.semibold) //iOS 16 or newer
             .foregroundStyle(.white)
+            .background(Color.accentColor)
             .cornerRadius(10)
     }
 }
