@@ -7,46 +7,42 @@
 
 import SwiftUI
 
+//TODO: Show duplicate items as a same item with a quantity field, like x2, x3.
+
 struct OrderView: View {
-    @StateObject var viewModel = AppetizerListViewModel()
-    @State private var orderItems = MockData.orderItems
+    @EnvironmentObject var orderViewModel: OrderViewModel
     
     var body: some View {
-        VStack {
-            NavigationView {
-                List {
-                    ForEach(orderItems) { appetizer in
-                        AppetizerListCell(appetizer: appetizer)
+        NavigationView {
+            ZStack {
+                VStack {
+                    List {
+                        ForEach(orderViewModel.appetizers) { appetizer in
+                            AppetizerListCell(appetizer: appetizer)
+                        }
+                        .onDelete { indexSet in
+                            withAnimation(.easeInOut) {
+                                orderViewModel.remove(at: indexSet)
+                            }
+                        }
                     }
-                    .onDelete { indexSet in
-                        deleteItems(at: indexSet)
+                    .navigationTitle("🛒 Orders")
+                    .listStyle(.plain)
+                    
+                    Button {
+                        print("Place order")
+                    } label: {
+                        APButton(price: "$\(orderViewModel.totalPrice, specifier: "%.2f") - Place order")
                     }
+                    .padding(.bottom)
                 }
-                .navigationTitle("🍟 Appetizers")
-                .disabled(viewModel.isShowingDetail)
-                .listStyle(.plain)
-            }
-            .onAppear {
-                self.viewModel.getAppetizers()
-            }
-            .blur(radius: viewModel.isShowingDetail ? 20 : 0)
-            
-            Button {
-                print("Place order")
-            } label: {
-                APButton(price: "$\(MockData.sampleAppetizer1.price, specifier: "%.2f") - Place order")
-            }
-            .padding(.bottom)
+                                    
+                if orderViewModel.appetizers.isEmpty {
+                EmptyListState(imageName: "empty-order", message: "You have no items in your order ☹️\nPlease add an appetizer. 🌮")
+                        .transition(.scale)
+                }
+            }            
         }
-        .alert(item: $viewModel.alertItem) { alertItem in
-            Alert(title: alertItem.title,
-                  message: alertItem.message,
-                  dismissButton: alertItem.dismissButton)
-        }
-    }
-    
-    func deleteItems(at indexSet: IndexSet) {
-        orderItems.remove(atOffsets: indexSet)
     }
 }
 

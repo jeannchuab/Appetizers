@@ -33,19 +33,15 @@ struct AccountView: View {
                 
                 Section("Requests") {
                     Toggle("Extra Napkings", isOn: $viewModel.userModel.extraNapkings)
-//                         .tint(Color.brandPrimary)
                         
                     Toggle("Frequent Refills", isOn: $viewModel.userModel.frequentRefills)
-//                        .tint(Color.brandPrimary)                    
                 }
-                .tint(Color.brandPrimary)
                 
                 Button(action: {
                     viewModel.saveChanges()
                 }, label: {
                     Text("Save changes")
                 })
-                .tint(Color.brandPrimary)
             }
             .navigationTitle("👨‍💼 Account")
         }

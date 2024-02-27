@@ -14,7 +14,6 @@ struct ActivityIndicator: UIViewRepresentable { //Replaces the body in SwiftUI
     
     func makeUIView(context: Context) -> UIActivityIndicatorView {
         let activityIndicatorView = UIActivityIndicatorView(style: .large)
-        activityIndicatorView.color = UIColor.brandPrimary
         activityIndicatorView.startAnimating()
         return activityIndicatorView
     }
